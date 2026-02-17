@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "LabiryntLekcja.sln"
+    "dotnet.defaultSolution": "Labirynt-Lekcja.sln"
 }
