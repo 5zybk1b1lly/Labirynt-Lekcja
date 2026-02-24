@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 12f;
     Vector3 velocity;
     CharacterController controller;
+    public Transform groundCheck;
+    public LayerMask groundMask; 
+
 
     // Start is called before the first frame update
     void Start()
