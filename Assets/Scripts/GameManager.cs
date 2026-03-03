@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    public int timeToEnd = 60;
+    public int timeToEnd = 10;
     bool gamePaused = false;
+    bool endGame = false;
+    bool win = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,18 @@ public class GameManager : MonoBehaviour
     {
         timeToEnd--;
         Debug.Log("Time to end: "+timeToEnd+" seconds");
+
+        if (timeToEnd <= 0)
+        {
+            timeToEnd = 0;
+            endGame = true;
+        }
+
+        if (endGame)
+        {
+            EndGame();
+        }
+            
     }
     public void PauseGame()
     {
@@ -52,6 +66,18 @@ public class GameManager : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+    }
+    public void EndGame()
+    {
+        CancelInvoke("Stopper");
+        if (win)
+        {
+            Debug.Log("You win! Reload?");
+        }
+        else
+        {
+            Debug.Log("You lose! Reload?" );
         }
     }
 }
