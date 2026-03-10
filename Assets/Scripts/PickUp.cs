@@ -13,11 +13,15 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Rotation();
     }
-    public void Picked()
+    public virtual void Picked()
     {
         Debug.Log("Pick up");
         Destroy(gameObject);
+    }
+    public void Rotation()
+    {
+        transform.Rotate(new Vector3(0, 0, 5f));
     }
 }
