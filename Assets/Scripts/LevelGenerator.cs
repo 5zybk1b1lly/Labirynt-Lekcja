@@ -21,12 +21,17 @@ public class LevelGenerator : MonoBehaviour
     void GenerateTile(int x, int z)
     {
         Color pixelColor = map.GetPixel(x, z);
+
+        //Naprawa debugowanie kolorów, które są zaokrąglane do 0 lub 1, co powoduje błędne dopasowanie prefabrykatu
+        Debug.Log($"Pixel ({x},{z}): R={pixelColor.r} G={pixelColor.g} B={pixelColor.b} A={pixelColor.a}");
+        pixelColor = new Color(Mathf.Round(pixelColor.r), Mathf.Round(pixelColor.g), Mathf.Round(pixelColor.b));
         if (pixelColor.a == 0)
         {
             return;
         }
         foreach (ColorToPrefab colorMapping in colorMappings)
         {
+
             if (colorMapping.color.Equals(pixelColor))
             {
                 Vector3 position = new Vector3(x, 0, z) * offset;
